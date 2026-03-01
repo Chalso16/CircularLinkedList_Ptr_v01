@@ -22,15 +22,19 @@ private:
     //Usamos ptr_Tail ya que este apunta al ultimo, pero el ptr_Tail->ptr_Next es el head
     shared_ptr<Node> ptr_Tail;
     int size=0;
+
+
+
 public:
     bool empty();
     void push_front(int v);
     void push_back(int v);
     void pop_front();
-    void pop_back();
+    void pop_back();            //Para implementarlo habria que recorrer la lista entera. No es de O(1)
     void erase();
     int front();
     int back();
+    void print();
 };
 
 

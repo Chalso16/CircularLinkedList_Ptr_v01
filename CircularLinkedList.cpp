@@ -31,26 +31,33 @@ bool CircularLinkedList::empty() {
 void CircularLinkedList::push_front(int v) {
     shared_ptr<Node> ptr_New = make_shared<Node>(v);
     if (ptr_Tail==nullptr) {
-        ptr_Tail=ptr_New;               //Asignacion ptrTail
-        ptr_Tail->ptr_Next=ptr_New;     //Asignacion al Head el puntero nuevo
+        ptr_Tail=ptr_New;                       //Asignacion ptrTail
+        ptr_Tail->ptr_Next=ptr_New;             //Asignacion al Head el puntero nuevo
     }
     else {
         ptr_New->ptr_Next=ptr_Tail->ptr_Next;
-        ptr_Tail->ptr_Next=ptr_New;                 //ptr_Tail->ptr_Next = head
+        ptr_Tail->ptr_Next=ptr_New;             //ptr_Tail->ptr_Next = head
     }
 }
 
 void CircularLinkedList::push_back(int v) {
     shared_ptr<Node> ptr_New = make_shared<Node>(v);
     if (ptr_Tail==nullptr) {
-        ptr_Tail=ptr_New;               //Asignacion ptrTail
-        ptr_Tail->ptr_Next=ptr_New;     //Asignacion al Head el puntero nuevo
+                ptr_Tail=ptr_New;               //Asignacion ptrTail
+        ptr_Tail->ptr_Next=ptr_New;             //Asignacion al Head el puntero nuevo
     }
     else {
         ptr_New->ptr_Next=ptr_Tail->ptr_Next;   //Hacemos que el ptrNuevo->Next apunte al head
         ptr_Tail->ptr_Next = ptr_New;           //Head antiguo es ahora el ptrNuevo
         ptr_Tail=ptr_New;                       //Igualamos el tail al nuevoPtr
     }
+}
+
+void CircularLinkedList::pop_front() {
+    if (ptr_Tail==nullptr) {
+        return;
+    }
+    ptr_Tail->ptr_Next = ptr_Tail->ptr_Next->ptr_Next;
 }
 
 int CircularLinkedList::front() {
@@ -61,4 +68,32 @@ int CircularLinkedList::back() {
     return ptr_Tail->value;
 }
 
+/*  =========================================
+    == Para implementar el pop_back hay que ==
+    ==        recorrer toda la lista        ==
+    ==========================================  */
 
+// void CircularLinkedList::pop_back() {
+//     if (ptr_Tail==nullptr) {
+//         return;
+//     }
+// }
+
+void CircularLinkedList::print() {
+    if (ptr_Tail==nullptr) {
+        return;
+    }
+    shared_ptr<Node> ptr_Curr = ptr_Tail->ptr_Next;
+    cout << "\nLista circular: ";
+    while (ptr_Curr!=ptr_Tail) {            //Recorremos hasta llegar al tail(ultimo)
+        cout<<ptr_Curr->value<<" ";         //Imprimimos valor
+        ptr_Curr=ptr_Curr->ptr_Next;        //Actualizamos curr a el siguiente puntero (curr->next)
+    }
+    cout << ptr_Tail->value << endl;        //Imprimimos el tail ya que nunca llegamos a hacerlo en el bucle
+}
+
+// void CircularLinkedList() {
+//     cout << "Lista circular: ";
+//     spin(ptr_Tail->ptr_Next);
+//
+// }
