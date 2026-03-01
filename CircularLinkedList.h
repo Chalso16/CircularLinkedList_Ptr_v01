@@ -21,7 +21,7 @@ private:
 
     //Usamos ptr_Tail ya que este apunta al ultimo, pero el ptr_Tail->ptr_Next es el head
     shared_ptr<Node> ptr_Tail;
-    int size=0;
+    int sizeCircularLikedList=0;
 
 
 
@@ -35,6 +35,7 @@ public:
     int front();
     int back();
     void print();
+    int size();
 };
 
 

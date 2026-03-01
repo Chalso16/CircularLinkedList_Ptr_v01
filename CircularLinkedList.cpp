@@ -38,12 +38,13 @@ void CircularLinkedList::push_front(int v) {
         ptr_New->ptr_Next=ptr_Tail->ptr_Next;
         ptr_Tail->ptr_Next=ptr_New;             //ptr_Tail->ptr_Next = head
     }
+    sizeCircularLikedList++;
 }
 
 void CircularLinkedList::push_back(int v) {
     shared_ptr<Node> ptr_New = make_shared<Node>(v);
     if (ptr_Tail==nullptr) {
-                ptr_Tail=ptr_New;               //Asignacion ptrTail
+        ptr_Tail=ptr_New;                       //Asignacion ptrTail
         ptr_Tail->ptr_Next=ptr_New;             //Asignacion al Head el puntero nuevo
     }
     else {
@@ -51,6 +52,7 @@ void CircularLinkedList::push_back(int v) {
         ptr_Tail->ptr_Next = ptr_New;           //Head antiguo es ahora el ptrNuevo
         ptr_Tail=ptr_New;                       //Igualamos el tail al nuevoPtr
     }
+    sizeCircularLikedList++;
 }
 
 void CircularLinkedList::pop_front() {
@@ -58,6 +60,7 @@ void CircularLinkedList::pop_front() {
         return;
     }
     ptr_Tail->ptr_Next = ptr_Tail->ptr_Next->ptr_Next;
+    sizeCircularLikedList--;
 }
 
 int CircularLinkedList::front() {
@@ -92,8 +95,6 @@ void CircularLinkedList::print() {
     cout << ptr_Tail->value << endl;        //Imprimimos el tail ya que nunca llegamos a hacerlo en el bucle
 }
 
-// void CircularLinkedList() {
-//     cout << "Lista circular: ";
-//     spin(ptr_Tail->ptr_Next);
-//
-// }
+int CircularLinkedList::size() {
+    return sizeCircularLikedList;
+}
