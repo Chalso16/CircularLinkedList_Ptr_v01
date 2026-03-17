@@ -41,6 +41,7 @@ void CircularLinkedList::push_front(int v) {
     sizeCircularLikedList++;
 }
 
+
 void CircularLinkedList::push_back(int v) {
     shared_ptr<Node> ptr_New = make_shared<Node>(v);
     if (ptr_Tail==nullptr) {
