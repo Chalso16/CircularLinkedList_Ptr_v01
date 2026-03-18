@@ -39,6 +39,8 @@ void CircularLinkedList::push_front(int v) {
         ptr_Tail->ptr_Next=ptr_New;             //ptr_Tail->ptr_Next = head
     }
     sizeCircularLikedList++;
+
+    
 }
 
 
