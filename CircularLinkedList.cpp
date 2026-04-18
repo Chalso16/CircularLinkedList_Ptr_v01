@@ -40,7 +40,7 @@ void CircularLinkedList::push_front(int v) {
     }
     sizeCircularLikedList++;
 
-    
+
 }
 
 
